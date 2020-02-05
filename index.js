@@ -13,12 +13,12 @@ client.on('message', async message => {
             // block bots from DMing the user
             // bots are used for sending unsolicited advertisements mostly
             // also that "free nitro" scam going around.
-            return message.author.block();
+            return message.author.block(message.author.id, client.token);
         } else {
             // block people from sending you annoying server invites.
             if(/(https:\/\/)?discord.gg\/(.*)/g.test(message.content)) {
                 await message.channel.send('Blocked, please don\'t send unsolicited server invites.');
-                return client.block(message.author.id);
+                return message.author.block(message.author.id, client.token);
             }
         }
     }

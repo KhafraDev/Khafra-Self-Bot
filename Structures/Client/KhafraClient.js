@@ -1,13 +1,10 @@
 const { Client } = require('discord.js');
-const Block = require('../Methods/block');
+require('discord-verify'); // so process.env is propagated
+require('../Methods/block');
 
 class KhafraClient extends Client {
     constructor(opts = {}) {
         super(opts);
-    }
-
-    async block(id) {
-        return Block(id, this.token);
     }
 
     async login(token) {
